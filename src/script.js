@@ -385,7 +385,7 @@ function generatePDF() {
       doc.setFontSize(9);
       doc.setFont("helvetica", "bold");
 
-      const fullText = "Designed and developed by NexOracle";
+      const fullText = "Designed and developed by HAMII ❤";
       const textWidth = doc.getTextWidth(fullText);
 
       const xPosition = 105 - textWidth / 2;
