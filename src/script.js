@@ -105,7 +105,7 @@ searchBtn.addEventListener("click", async () => {
     let response = await fetch(`https://api.nexoracle.com/details/pak-sim-database?apikey=${paid_api_key}&q=${query}`);
     let data = await response.json();
 
-    if (response.status === 402 || data.result === "Access Not Allowed. Please Contact Owner.");
+    if (response.status === 402 || data.result === "Access Not Allowed. Please Contact Owner."); {
       response = await fetch(`https://api.nexoracle.com/details/pak-sim-database-free?apikey=${free_api_key}&q=${query}`);
       data = await response.json();
     }
