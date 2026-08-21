@@ -288,9 +288,9 @@ function generatePDF() {
     doc.setProperties({
       title,
       subject: "SIM Database Search Results",
-      author: "Hamii X Fionar",
+      author: "Maher Zubair",
       keywords: "sim, database, pakistan, cnic, number",
-      creator: "Pak Sim DataBase",
+      creator: "NexOracle",
     });
 
     doc.setFillColor(44, 62, 80);
@@ -385,7 +385,7 @@ function generatePDF() {
       doc.setFontSize(9);
       doc.setFont("helvetica", "bold");
 
-      const fullText = "Designed and developed by Hamii X Fiona";
+      const fullText = "Designed and developed by NexOracle";
       const textWidth = doc.getTextWidth(fullText);
 
       const xPosition = 105 - textWidth / 2;
@@ -395,7 +395,7 @@ function generatePDF() {
 
       const nexOracleX = xPosition + doc.getTextWidth("Designed and developed by ");
       doc.setTextColor(59, 130, 246);
-      doc.textWithLink("Hamii x Fiona", nexOracleX, 290, { url: "https://hamii.site.je" });
+      doc.textWithLink("NexOracle", nexOracleX, 290, { url: "https://nexoracle.com" });
     }
 
     let fileName;
