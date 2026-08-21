@@ -288,9 +288,9 @@ function generatePDF() {
     doc.setProperties({
       title,
       subject: "SIM Database Search Results",
-      author: "Maher Zubair",
+      author: "Hamii X Fionar",
       keywords: "sim, database, pakistan, cnic, number",
-      creator: "NexOracle",
+      creator: "Pak Sim DataBase",
     });
 
     doc.setFillColor(44, 62, 80);
@@ -436,3 +436,4 @@ ScrollReveal().reveal(".animate-slide-up", {
   origin: "bottom",
   easing: "ease-out",
 });
+
