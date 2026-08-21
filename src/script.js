@@ -385,7 +385,7 @@ function generatePDF() {
       doc.setFontSize(9);
       doc.setFont("helvetica", "bold");
 
-      const fullText = "Designed and developed by NexOracle";
+      const fullText = "Designed and developed by Hamii X Fiona";
       const textWidth = doc.getTextWidth(fullText);
 
       const xPosition = 105 - textWidth / 2;
@@ -395,7 +395,7 @@ function generatePDF() {
 
       const nexOracleX = xPosition + doc.getTextWidth("Designed and developed by ");
       doc.setTextColor(59, 130, 246);
-      doc.textWithLink("NexOracle", nexOracleX, 290, { url: "https://nexoracle.com" });
+      doc.textWithLink("Hamii x Fiona", nexOracleX, 290, { url: "https://hamii.site.je" });
     }
 
     let fileName;
