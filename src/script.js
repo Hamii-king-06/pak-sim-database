@@ -99,13 +99,14 @@ searchBtn.addEventListener("click", async () => {
 
   const paid_api_key = "49d32e2308c704f3fa";
   const free_api_key = "free_key@maher_apis";
-  const whatsapp_contact_link = "https://api.whatsapp.com/send/?phone=12897961970&text=Hi+Bro,+I+Want+Paid+Data+For+Number.";
+  const whatsapp_contact_link = "https://api.whatsapp.com/send/?phone=92&text=Hi+Maher+Zubair+Bro,+I+Want+VIP+API+Access+For+SIM+Database.&type=phone_number";
 
   try {
     let response = await fetch(`https://api.nexoracle.com/details/pak-sim-database?apikey=${paid_api_key}&q=${query}`);
     let data = await response.json();
 
     if (response.status === 402 || data.result === "Access Not Allowed. Please Contact Owner.") {
+      showNotification("Paid ApiKey Required", "Using Free API Because You Didn't Have Paid ApiKey Access.", "error", 7000);
       response = await fetch(`https://api.nexoracle.com/details/pak-sim-database-free?apikey=${free_api_key}&q=${query}`);
       data = await response.json();
     }
@@ -119,7 +120,7 @@ searchBtn.addEventListener("click", async () => {
                   <div class="text-xl text-white-400 mb-4 font-bold">No Detail Records Found in Database</div>
                   <p class="mb-6">You can get this number details via paid service</p>
                   <a href="${whatsapp_contact_link}" target="_blank" class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-lg inline-flex items-center">
-                  <i class="fab fa-whatsapp mr-2"></i> For paid data contact WhatsApp
+                      <i class="fab fa-whatsapp mr-2"></i> Contact on WhatsApp
                   </a>
               `;
       resultsList.appendChild(noDataItem);
@@ -436,4 +437,3 @@ ScrollReveal().reveal(".animate-slide-up", {
   origin: "bottom",
   easing: "ease-out",
 });
-
