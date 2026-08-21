@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
 
-    <!-- Google Font for Clean & Fancy Look -->
+    <!-- Google Font for Premium Look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -23,27 +23,6 @@
     <meta property="og:image" content="assests/og-image.png" />
 
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            },
-            colors: {
-              dark: {
-                900: '#0b0f19', // Soft luxurious deep navy background (easy on eyes)
-                800: '#111827', // Card background
-                700: '#1f2937', // Hover/border tone
-                600: '#374151'
-              }
-            }
-          }
-        }
-      }
-    </script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.js"></script>
 
@@ -51,100 +30,96 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 
     <style>
-      /* Smooth scrolling & custom glass aesthetics */
       html { scroll-behavior: smooth; }
-      body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0b0f19; color: #e5e7eb; }
+      body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; color: #1e293b; }
       
-      .glass-card {
-        background: rgba(17, 24, 39, 0.75);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+      /* Light Glassmorphism Card Style */
+      .light-glass {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.05);
       }
       
-      .glass-card-hover:hover {
-        border-color: rgba(59, 130, 246, 0.3);
+      .light-glass-hover:hover {
+        border-color: rgba(59, 130, 246, 0.4);
         box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.1);
-      }
-
-      .glow-blue {
-        box-shadow: 0 0 35px -5px rgba(59, 130, 246, 0.25);
       }
     </style>
   </head>
 
-  <body class="bg-[#0b0f19] text-gray-200 min-h-screen selection:bg-blue-500 selection:text-white">
+  <body class="bg-[#f8fafc] text-slate-800 min-h-screen selection:bg-blue-500 selection:text-white">
     <!-- Notification System -->
-    <div id="notification" class="notification hidden fixed top-5 right-5 z-50 glass-card border-l-4 border-red-500 text-gray-200 p-4 rounded-xl shadow-2xl">
+    <div id="notification" class="notification hidden fixed top-5 right-5 z-50 bg-white border-l-4 border-red-500 text-slate-800 p-4 rounded-xl shadow-2xl border border-slate-100">
       <div class="flex items-start">
         <div class="flex-shrink-0">
-          <i class="fas fa-exclamation-circle text-red-400 text-xl"></i>
+          <i class="fas fa-exclamation-circle text-red-500 text-xl"></i>
         </div>
         <div class="ml-3 mr-6">
           <h3 id="notification-title" class="text-base font-semibold"></h3>
-          <div id="notification-message" class="mt-1 text-sm text-gray-400"></div>
+          <div id="notification-message" class="mt-1 text-sm text-slate-500"></div>
         </div>
-        <button onclick="hideNotification()" class="text-gray-400 hover:text-white focus:outline-none transition">
+        <button onclick="hideNotification()" class="text-slate-400 hover:text-slate-700 focus:outline-none transition">
           <i class="fas fa-times"></i>
         </button>
       </div>
     </div>
 
     <!-- Navigation -->
-    <nav class="glass-card sticky top-0 z-40 border-b border-white/5 py-3">
+    <nav class="light-glass sticky top-0 z-40 border-b border-slate-200/60 py-3.5">
       <div class="container mx-auto px-4 flex justify-between items-center">
         <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
-            <i class="fas fa-sim-card text-blue-400 text-xl"></i>
+          <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center border border-blue-100 shadow-sm">
+            <i class="fas fa-sim-card text-blue-600 text-xl"></i>
           </div>
-          <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-blue-400 via-blue-300 to-indigo-400 bg-clip-text text-transparent">Pak SIM Data</span>
+          <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Pak SIM Data</span>
         </div>
-        <div class="hidden md:flex space-x-8 items-center text-sm font-medium text-gray-300">
-          <a href="index.html" class="hover:text-blue-400 transition">Home</a>
-          <a href="#about" class="hover:text-blue-400 transition">Services</a>
-          <a href="#faq" class="hover:text-blue-400 transition">FAQs</a>
-          <a href="https://wa.me/12897961970" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-xl transition shadow-lg shadow-blue-500/20">Support</a>
+        <div class="hidden md:flex space-x-8 items-center text-sm font-semibold text-slate-600">
+          <a href="index.html" class="hover:text-blue-600 transition">Home</a>
+          <a href="#about" class="hover:text-blue-600 transition">Services</a>
+          <a href="#faq" class="hover:text-blue-600 transition">FAQs</a>
+          <a href="https://wa.me/12897961970" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl transition shadow-md shadow-blue-500/20">Support</a>
         </div>
-        <button class="md:hidden text-xl focus:outline-none text-gray-300 hover:text-white" id="mobile-menu-button">
+        <button class="md:hidden text-xl focus:outline-none text-slate-700 hover:text-black" id="mobile-menu-button">
           <i class="fas fa-bars"></i>
         </button>
       </div>
 
       <!-- Mobile Menu -->
-      <div class="md:hidden hidden mt-3 mx-4 glass-card rounded-2xl p-4 border border-white/10" id="mobile-menu">
-        <a href="index.html" class="block py-2.5 px-4 rounded-xl hover:bg-white/5 transition flex items-center text-gray-300"> <i class="fas fa-home mr-3 text-blue-400"></i> Home </a>
-        <a href="#about" class="block py-2.5 px-4 rounded-xl hover:bg-white/5 transition flex items-center mt-1 text-gray-300"> <i class="fas fa-info-circle mr-3 text-blue-400"></i> Services </a>
-        <a href="#faq" class="block py-2.5 px-4 rounded-xl hover:bg-white/5 transition flex items-center mt-1 text-gray-300"> <i class="fas fa-question-circle mr-3 text-blue-400"></i> FAQs </a>
+      <div class="md:hidden hidden mt-3 mx-4 light-glass rounded-2xl p-4 border border-slate-200" id="mobile-menu">
+        <a href="index.html" class="block py-2.5 px-4 rounded-xl hover:bg-blue-50 transition flex items-center text-slate-700"> <i class="fas fa-home mr-3 text-blue-600"></i> Home </a>
+        <a href="#about" class="block py-2.5 px-4 rounded-xl hover:bg-blue-50 transition flex items-center mt-1 text-slate-700"> <i class="fas fa-info-circle mr-3 text-blue-600"></i> Services </a>
+        <a href="#faq" class="block py-2.5 px-4 rounded-xl hover:bg-blue-50 transition flex items-center mt-1 text-slate-700"> <i class="fas fa-question-circle mr-3 text-blue-600"></i> FAQs </a>
       </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="container mx-auto px-4 pt-16 pb-8">
       <div class="text-center max-w-3xl mx-auto">
-        <span class="inline-block py-1.5 px-4 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-wide uppercase mb-4">Official Verification Portal</span>
-        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent">
-          Pak SIM <span class="bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">Database</span>
+        <span class="inline-block py-1.5 px-4 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-semibold tracking-wide uppercase mb-4 shadow-sm">Official Verification Portal</span>
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 text-slate-900">
+          Pak SIM <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Database</span>
         </h1>
-        <p class="text-base md:text-lg text-gray-400 leading-relaxed">Search Pakistan SIM & CNIC records securely. Get accurate owner names, current addresses, and active network details instantly.</p>
+        <p class="text-base md:text-lg text-slate-500 leading-relaxed">Search Pakistan SIM & CNIC records securely. Get accurate owner names, current addresses, and active network details instantly.</p>
       </div>
     </section>
 
     <!-- Search Section -->
     <section class="container mx-auto px-4 py-6">
-      <div class="max-w-xl mx-auto glass-card rounded-3xl p-6 md:p-8 glow-blue border border-blue-500/20">
-        <h2 class="text-xl md:text-2xl font-bold mb-6 text-center text-gray-100">Live Database Lookup</h2>
+      <div class="max-w-xl mx-auto light-glass rounded-3xl p-6 md:p-8 shadow-xl border border-slate-200/80">
+        <h2 class="text-xl md:text-2xl font-bold mb-6 text-center text-slate-800">Live Database Lookup</h2>
         <div class="space-y-5">
           <div>
             <div class="relative">
-              <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-500">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
                 <i class="fas fa-search"></i>
               </span>
-              <input type="text" id="searchInput" placeholder="e.g 03000000000 or CNIC" class="w-full pl-11 pr-4 py-3.5 bg-[#0b0f19]/80 border border-white/10 rounded-2xl text-gray-100 placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition text-sm md:text-base" />
+              <input type="text" id="searchInput" placeholder="e.g 03000000000 or CNIC" class="w-full pl-11 pr-4 py-3.5 bg-slate-50/80 border border-slate-200 rounded-2xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 transition text-sm md:text-base font-medium" />
             </div>
-            <p class="text-xs text-gray-500 mt-2 ml-1">Format: Enter 11-digit mobile number or 13-digit CNIC</p>
+            <p class="text-xs text-slate-400 mt-2 ml-1">Format: Enter 11-digit mobile number or 13-digit CNIC</p>
           </div>
-          <button id="searchBtn" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white py-3.5 px-4 rounded-2xl font-semibold transition-all duration-300 shadow-lg shadow-blue-600/25 hover:shadow-blue-600/40 transform hover:-translate-y-0.5">
+          <button id="searchBtn" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-3.5 px-4 rounded-2xl font-semibold transition-all duration-300 shadow-lg shadow-blue-600/25 hover:shadow-blue-600/40 transform hover:-translate-y-0.5">
             Search Records Now
           </button>
         </div>
@@ -154,7 +129,7 @@
     <!-- Results Section -->
     <section class="container mx-auto px-4 py-8" id="results">
       <div class="max-w-3xl mx-auto hidden" id="resultsContainer">
-        <h2 class="text-2xl font-bold mb-6 text-blue-400 flex items-center"><i class="fas fa-id-card mr-3"></i> Verification Results</h2>
+        <h2 class="text-2xl font-bold mb-6 text-blue-600 flex items-center"><i class="fas fa-id-card mr-3"></i> Verification Results</h2>
         <div id="resultsList" class="space-y-4">
           <!-- Results will be inserted here -->
         </div>
@@ -165,54 +140,54 @@
     <section class="container mx-auto px-4 py-16" id="about">
       <div class="max-w-5xl mx-auto">
         <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold mb-3 text-gray-100">Premium & Standard Services</h2>
-          <p class="text-gray-400 text-sm md:text-base">Comprehensive record lookup categories handled securely</p>
+          <h2 class="text-3xl font-bold mb-3 text-slate-900">Premium & Standard Services</h2>
+          <p class="text-slate-500 text-sm md:text-base">Comprehensive record lookup categories handled securely</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- Card 1: All Paid Services -->
-          <div class="glass-card glass-card-hover p-6 md:p-8 rounded-3xl transition duration-300">
+          <!-- Card 1 -->
+          <div class="light-glass light-glass-hover p-6 md:p-8 rounded-3xl transition duration-300">
             <div class="flex items-center mb-6">
-              <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 text-xl mr-4 border border-blue-500/20">
+              <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 text-xl mr-4 border border-blue-100">
                 <i class="fas fa-shield-alt"></i>
               </div>
               <div>
-                <h3 class="text-xl font-bold text-gray-100">General Record Services</h3>
-                <p class="text-xs text-gray-400">Advanced background details</p>
+                <h3 class="text-xl font-bold text-slate-800">General Record Services</h3>
+                <p class="text-xs text-slate-400">Advanced background details</p>
               </div>
             </div>
-            <ul class="space-y-3 text-sm text-gray-300 mb-8">
-              <li class="flex items-center"><i class="fas fa-check text-blue-400 mr-3 text-xs"></i><span>Family Tree & Details</span></li>
-              <li class="flex items-center"><i class="fas fa-check text-blue-400 mr-3 text-xs"></i><span>Fresh Sim Database Records</span></li>
-              <li class="flex items-center"><i class="fas fa-check text-blue-400 mr-3 text-xs"></i><span>All Pakistan FIR Record Check</span></li>
-              <li class="flex items-center"><i class="fas fa-check text-blue-400 mr-3 text-xs"></i><span>CNIC Issue Date & Info Lookup</span></li>
-              <li class="flex items-center"><i class="fas fa-check text-blue-400 mr-3 text-xs"></i><span>Mother Name & Parentage Info</span></li>
-              <li class="flex items-center"><i class="fas fa-check text-blue-400 mr-3 text-xs"></i><span>CNIC to CNIC Link Verification</span></li>
+            <ul class="space-y-3 text-sm text-slate-600 mb-8 font-medium">
+              <li class="flex items-center"><i class="fas fa-check text-blue-600 mr-3 text-xs"></i><span>Family Tree & Details</span></li>
+              <li class="flex items-center"><i class="fas fa-check text-blue-600 mr-3 text-xs"></i><span>Fresh Sim Database Records</span></li>
+              <li class="flex items-center"><i class="fas fa-check text-blue-600 mr-3 text-xs"></i><span>All Pakistan FIR Record Check</span></li>
+              <li class="flex items-center"><i class="fas fa-check text-blue-600 mr-3 text-xs"></i><span>CNIC Issue Date & Info Lookup</span></li>
+              <li class="flex items-center"><i class="fas fa-check text-blue-600 mr-3 text-xs"></i><span>Mother Name & Parentage Info</span></li>
+              <li class="flex items-center"><i class="fas fa-check text-blue-600 mr-3 text-xs"></i><span>CNIC to CNIC Link Verification</span></li>
             </ul>
-            <a href="https://wa.me/12897961970" target="_blank" class="w-full bg-white/5 hover:bg-green-600 border border-white/10 hover:border-transparent text-white font-medium py-3 px-4 rounded-xl flex items-center justify-center transition duration-200">
-              <i class="fab fa-whatsapp mr-2 text-lg text-green-400 group-hover:text-white"></i> Contact on WhatsApp
+            <a href="https://wa.me/12897961970" target="_blank" class="w-full bg-slate-100 hover:bg-green-600 border border-slate-200 hover:border-transparent text-slate-700 hover:text-white font-semibold py-3 px-4 rounded-xl flex items-center justify-center transition duration-200 shadow-sm">
+              <i class="fab fa-whatsapp mr-2 text-lg text-green-500 group-hover:text-white"></i> Contact on WhatsApp
             </a>
           </div>
 
-          <!-- Card 2: Jazz / Easypaisa Services -->
-          <div class="glass-card glass-card-hover p-6 md:p-8 rounded-3xl transition duration-300">
+          <!-- Card 2 -->
+          <div class="light-glass light-glass-hover p-6 md:p-8 rounded-3xl transition duration-300">
             <div class="flex items-center mb-6">
-              <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 text-xl mr-4 border border-indigo-500/20">
+              <div class="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600 text-xl mr-4 border border-indigo-100">
                 <i class="fas fa-wallet"></i>
               </div>
               <div>
-                <h3 class="text-xl font-bold text-gray-100">Wallet Recovery Services</h3>
-                <p class="text-xs text-gray-400">Easypaisa & JazzCash support</p>
+                <h3 class="text-xl font-bold text-slate-800">Wallet Recovery Services</h3>
+                <p class="text-xs text-slate-400">Easypaisa & JazzCash support</p>
               </div>
             </div>
-            <ul class="space-y-3 text-sm text-gray-300 mb-8">
-              <li class="flex items-center"><i class="fas fa-check text-indigo-400 mr-3 text-xs"></i><span>Easypaisa PIN Reset Assistance</span></li>
-              <li class="flex items-center"><i class="fas fa-check text-indigo-400 mr-3 text-xs"></i><span>JazzCash Merchant PIN Reset</span></li>
-              <li class="flex items-center"><i class="fas fa-check text-indigo-400 mr-3 text-xs"></i><span>JazzCash Account Issue Date</span></li>
-              <li class="flex items-center"><i class="fas fa-check text-indigo-400 mr-3 text-xs"></i><span>Full Wallet Owner Details</span></li>
+            <ul class="space-y-3 text-sm text-slate-600 mb-8 font-medium">
+              <li class="flex items-center"><i class="fas fa-check text-indigo-600 mr-3 text-xs"></i><span>Easypaisa PIN Reset Assistance</span></li>
+              <li class="flex items-center"><i class="fas fa-check text-indigo-600 mr-3 text-xs"></i><span>JazzCash Merchant PIN Reset</span></li>
+              <li class="flex items-center"><i class="fas fa-check text-indigo-600 mr-3 text-xs"></i><span>JazzCash Account Issue Date</span></li>
+              <li class="flex items-center"><i class="fas fa-check text-indigo-600 mr-3 text-xs"></i><span>Full Wallet Owner Details</span></li>
             </ul>
-            <a href="https://wa.me/12897961970" target="_blank" class="w-full bg-white/5 hover:bg-green-600 border border-white/10 hover:border-transparent text-white font-medium py-3 px-4 rounded-xl flex items-center justify-center transition duration-200">
-              <i class="fab fa-whatsapp mr-2 text-lg text-green-400"></i> Contact on WhatsApp
+            <a href="https://wa.me/12897961970" target="_blank" class="w-full bg-slate-100 hover:bg-green-600 border border-slate-200 hover:border-transparent text-slate-700 hover:text-white font-semibold py-3 px-4 rounded-xl flex items-center justify-center transition duration-200 shadow-sm">
+              <i class="fab fa-whatsapp mr-2 text-lg text-green-500"></i> Contact on WhatsApp
             </a>
           </div>
         </div>
@@ -223,37 +198,37 @@
     <section class="container mx-auto px-4 py-16" id="faq">
       <div class="max-w-3xl mx-auto">
         <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold mb-3 text-gray-100">Frequently Asked Questions</h2>
-          <p class="text-gray-400 text-sm">Everything you need to know about our data verification service</p>
+          <h2 class="text-3xl font-bold mb-3 text-slate-900">Frequently Asked Questions</h2>
+          <p class="text-slate-500 text-sm">Everything you need to know about our data verification service</p>
         </div>
 
         <div class="space-y-4">
-          <div class="glass-card rounded-2xl overflow-hidden transition-all duration-300">
-            <button class="faq-btn w-full flex justify-between items-center p-5 text-left text-gray-200 font-medium hover:text-blue-400">
+          <div class="light-glass rounded-2xl overflow-hidden transition-all duration-300 shadow-sm">
+            <button class="faq-btn w-full flex justify-between items-center p-5 text-left text-slate-800 font-semibold hover:text-blue-600">
               <span>Is this database search secure and legal?</span>
-              <i class="fas fa-chevron-down text-xs text-gray-400 transition-transform duration-300"></i>
+              <i class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-300"></i>
             </button>
-            <div class="faq-content px-5 pb-5 hidden text-gray-400 text-sm leading-relaxed">
+            <div class="faq-content px-5 pb-5 hidden text-slate-500 text-sm leading-relaxed font-medium">
               <p>Yes, our system provides verification checks securely without storing personal logs or search queries, keeping all inquiries anonymous.</p>
             </div>
           </div>
 
-          <div class="glass-card rounded-2xl overflow-hidden transition-all duration-300">
-            <button class="faq-btn w-full flex justify-between items-center p-5 text-left text-gray-200 font-medium hover:text-blue-400">
+          <div class="light-glass rounded-2xl overflow-hidden transition-all duration-300 shadow-sm">
+            <button class="faq-btn w-full flex justify-between items-center p-5 text-left text-slate-800 font-semibold hover:text-blue-600">
               <span>How accurate are the phone and CNIC results?</span>
-              <i class="fas fa-chevron-down text-xs text-gray-400 transition-transform duration-300"></i>
+              <i class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-300"></i>
             </button>
-            <div class="faq-content px-5 pb-5 hidden text-gray-400 text-sm leading-relaxed">
+            <div class="faq-content px-5 pb-5 hidden text-slate-500 text-sm leading-relaxed font-medium">
               <p>Our records are updated regularly, yielding up to 98% accuracy for verified Pakistan network database lookups.</p>
             </div>
           </div>
 
-          <div class="glass-card rounded-2xl overflow-hidden transition-all duration-300">
-            <button class="faq-btn w-full flex justify-between items-center p-5 text-left text-gray-200 font-medium hover:text-blue-400">
+          <div class="light-glass rounded-2xl overflow-hidden transition-all duration-300 shadow-sm">
+            <button class="faq-btn w-full flex justify-between items-center p-5 text-left text-slate-800 font-semibold hover:text-blue-600">
               <span>What payment options are accepted for services?</span>
-              <i class="fas fa-chevron-down text-xs text-gray-400 transition-transform duration-300"></i>
+              <i class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-300"></i>
             </button>
-            <div class="faq-content px-5 pb-5 hidden text-gray-400 text-sm leading-relaxed">
+            <div class="faq-content px-5 pb-5 hidden text-slate-500 text-sm leading-relaxed font-medium">
               <p>We accept JazzCash, EasyPaisa, direct bank transfers, and cryptocurrencies (Binance). Reach out on WhatsApp for instant activation.</p>
             </div>
           </div>
@@ -262,20 +237,20 @@
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-white/5 py-10 mt-12 bg-[#080b13]">
-      <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+    <footer class="border-t border-slate-200 py-10 mt-12 bg-white">
+      <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
         <div class="flex items-center space-x-2 mb-4 md:mb-0">
-          <i class="fas fa-sim-card text-blue-400"></i>
-          <span class="text-gray-300 font-semibold">Pak SIM Database</span>
+          <i class="fas fa-sim-card text-blue-600"></i>
+          <span class="text-slate-800 font-bold">Pak SIM Database</span>
         </div>
         <div class="flex space-x-6 mb-4 md:mb-0 text-lg">
-          <a href="https://wa.me/12897961970" class="hover:text-blue-400 transition"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://youtube.com/Hamiiworld" class="hover:text-blue-400 transition"><i class="fab fa-youtube"></i></a>
-          <a href="https://instagram.com/hamii.pk" class="hover:text-blue-400 transition"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/12897961970" class="hover:text-blue-600 transition"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://youtube.com/Hamiiworld" class="hover:text-blue-600 transition"><i class="fab fa-youtube"></i></a>
+          <a href="https://instagram.com/hamii.pk" class="hover:text-blue-600 transition"><i class="fab fa-instagram"></i></a>
         </div>
         <div class="text-center md:text-right">
           <p>© 2026 Pak SIM Database. All rights reserved.</p>
-          <p class="text-xs mt-1 text-gray-600">Designed & Developed by <span class="text-blue-400">Hamii x Fiona</span></p>
+          <p class="text-xs mt-1 text-slate-400">Designed & Developed by <span class="text-blue-600 font-semibold">Hamii x Fiona</span></p>
         </div>
       </div>
     </footer>
